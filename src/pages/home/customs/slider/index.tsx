@@ -74,7 +74,7 @@ export default function Slider() {
 	const slide = slides[current];
 
 	return (
-		<div className="relative w-full h-[540px] md:h-[600px] flex items-center justify-center bg-muted overflow-hidden mt-6">
+		<div className="relative w-full h-[420px] xs:h-[480px] sm:h-[520px] md:h-[600px] flex items-center justify-center bg-muted overflow-hidden mt-6">
 			{/* BG Image with fade animation */}
 			<img
 				src={slide.image}
@@ -88,32 +88,32 @@ export default function Slider() {
 			/>
 			{/* Slide content with fade animation */}
 			<div
-				className={`relative z-20 flex w-full h-full items-center justify-between px-6 md:px-16 transition-opacity duration-300 ${fade === "in" ? "opacity-100" : "opacity-0"}`}
+				className={`relative z-20 flex flex-col md:flex-row w-full h-full items-center justify-center md:justify-between px-2 xs:px-4 sm:px-6 md:px-16 transition-opacity duration-300 ${fade === "in" ? "opacity-100" : "opacity-0"}`}
 			>
 				{/* Left Card */}
-				<div className="bg-white/95 rounded-xl shadow-lg p-8 md:p-14 max-w-[520px] w-full flex flex-col gap-5">
-					<h2 className="text-2xl md:text-3xl font-extrabold text-primary mb-1 leading-tight">
+				<div className="bg-white/95 rounded-xl shadow-lg p-4 xs:p-6 sm:p-8 md:p-14 max-w-full md:max-w-[520px] w-full flex flex-col gap-3 xs:gap-4 sm:gap-5 mb-4 md:mb-0">
+					<h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-extrabold text-primary mb-1 leading-tight text-center md:text-left">
 						{slide.title}
 					</h2>
-					<p className="text-muted-foreground text-base md:text-lg">
+					<p className="text-muted-foreground text-sm xs:text-base md:text-lg text-center md:text-left">
 						{slide.desc}
 					</p>
 				</div>
 				{/* Right Card */}
-				<div className="bg-white/95 rounded-xl shadow-lg p-8 md:p-10 flex flex-col gap-6 min-w-[320px] max-w-[360px] w-full items-center">
-					<Button variant="ghost" className="w-full font-bold shadow-none">
+				<div className="bg-white/95 rounded-xl shadow-lg p-4 xs:p-6 sm:p-8 md:p-10 flex flex-col gap-4 xs:gap-5 sm:gap-6 min-w-0 max-w-full md:min-w-[320px] md:max-w-[360px] w-full items-center">
+					<Button variant="ghost" className="w-full font-bold shadow-none text-xs xs:text-sm sm:text-base">
 						{slide.btn1.text}
 					</Button>
 					<a
 						href={slide.btn2.href}
-						className="w-full flex items-center gap-3 rounded-lg px-4 py-2 hover:bg-primary/5 transition"
+						className="w-full flex items-center gap-2 xs:gap-3 rounded-lg px-2 xs:px-4 py-2 hover:bg-primary/5 transition"
 					>
-						<slide.btn2.icon className="text-primary" size={22} />
+						<slide.btn2.icon className="text-primary" size={18} />
 						<div className="flex flex-col items-start">
-							<span className="text-xs font-semibold text-primary uppercase tracking-wider">
+							<span className="text-[10px] xs:text-xs font-semibold text-primary uppercase tracking-wider">
 								{slide.btn2.text}
 							</span>
-							<span className="text-xs text-muted-foreground">
+							<span className="text-[10px] xs:text-xs text-muted-foreground">
 								{slide.btn2.sub}
 							</span>
 						</div>
@@ -122,7 +122,7 @@ export default function Slider() {
 			</div>
 			{/* Nav Arrows */}
 			<button
-				className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-md z-30"
+				className="absolute left-2 xs:left-3 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-1.5 xs:p-2 shadow-md z-30 text-xs xs:text-base"
 				onClick={prev}
 				aria-label="Previous slide"
 				type="button"
@@ -130,7 +130,7 @@ export default function Slider() {
 				<ArrowLeft className="text-primary" />
 			</button>
 			<button
-				className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-2 shadow-md z-30"
+				className="absolute right-2 xs:right-3 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-1.5 xs:p-2 shadow-md z-30 text-xs xs:text-base"
 				onClick={next}
 				aria-label="Next slide"
 				type="button"
@@ -138,11 +138,11 @@ export default function Slider() {
 				<ArrowRight className="text-primary" />
 			</button>
 			{/* Dots */}
-			<div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+			<div className="absolute bottom-3 xs:bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 xs:gap-2 z-30">
 				{slides.map((_, i) => (
 					<button
 						key={i}
-						className={`w-2.5 h-2.5 rounded-full transition-all duration-200 ${i === current ? "bg-primary" : "bg-primary/30"}`}
+						className={`w-2 h-2 xs:w-2.5 xs:h-2.5 rounded-full transition-all duration-200 ${i === current ? "bg-primary" : "bg-primary/30"}`}
 						onClick={() => goTo(i)}
 						aria-label={`Go to slide ${i + 1}`}
 						type="button"
